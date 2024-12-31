@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+	  
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>BootCamp_aio</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Authors>miniusbhater</Authors>
+    <Description>A free and open-source tool for downloading bootcamp drivers</Description>
+  </PropertyGroup>
+
+</Project>
