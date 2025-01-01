@@ -11,4 +11,8 @@
     <Description>A free and open-source tool for downloading bootcamp drivers</Description>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.Management" Version="9.0.0" />
+  </ItemGroup>
+
 </Project>

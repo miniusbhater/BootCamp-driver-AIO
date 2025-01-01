@@ -1,15 +1,131 @@
 ﻿using System.Diagnostics;
 using System.Net;
-Console.WriteLine("MAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!!\nMAKE SURE YOU RAN AS ADMINISTRATOR!!\nMAKE SURE YOU RAN AS ADMINISTRATOR!!\nMAKE SURE YOU RAN AS ADMINISTRATOR!!\nMAKE SURE YOU RAN AS ADMINISTRATOR!!\nMAKE SURE YOU RAN AS ADMINISTRATOR!!\nMAKE SURE YOU RAN AS ADMINISTRATOR!!\nMAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!! \nMAKE SURE YOU RAN AS ADMINISTRATOR!! \n" + "");
+using System.Management;
+using System;
+using Microsoft.VisualBasic;
+using System.Security.Principal;
+
+Thread.Sleep(400);
+Console.WriteLine("Version: 1.0.0.0");
+Thread.Sleep(75);
+Console.WriteLine("Build date: 01/01/2025");
 Thread.Sleep(1000);
+Console.WriteLine("Getting computer information...");
+Thread.Sleep(500);
+string mani = "error!"; 
+string mode = "error!"; 
+string osversion = "error!";
+string machnam = "error!";
+
+
+
+
+try
+{
+
+    System.Management.SelectQuery query = new System.Management.SelectQuery(@"Select * from Win32_ComputerSystem");
+
+    using (System.Management.ManagementObjectSearcher searcher = new System.Management.ManagementObjectSearcher(query))
+    {
+        foreach (System.Management.ManagementObject process in searcher.Get())
+        {
+            process.Get();
+            Console.WriteLine("{0}{1}", "System Manufacturer:", process["Manufacturer"]);
+            Console.WriteLine("{0}{1}", " System Model:", process["Model"]);
+
+            mani = process["Manufacturer"] as string;
+            mode = process["Model"] as string;
+        }
+    }
+
+    System.Management.ManagementObjectSearcher searcher1 = new System.Management.ManagementObjectSearcher("SELECT * FROM Win32_BIOS");
+    System.Management.ManagementObjectCollection collection = searcher1.Get();
+
+    foreach (ManagementObject obj in collection)
+    {
+        if (((string[])obj["BIOSVersion"]).Length > 1)
+            Console.WriteLine("BIOS VERSION: " + ((string[])obj["BIOSVersion"])[0] + " - " + ((string[])obj["BIOSVersion"])[1]);
+        else
+            Console.WriteLine("BIOS VERSION: " + ((string[])obj["BIOSVersion"])[0]);
+    }
+}
+
+catch
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine("FAILED TO GET COMPUTER INFORMATION");
+    Console.ResetColor();
+}
+try
+{
+    Thread.Sleep(100);
+    osversion = System.Environment.OSVersion.ToString();
+}
+catch 
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine("Failed to obtain windows version");
+    Console.ResetColor();
+}
+
+
+Console.WriteLine("Manufacturer: " + mani);
+Console.WriteLine("Model: " + mode);
+Thread.Sleep(100);
+Console.WriteLine("Operating System: " + osversion);
+Thread.Sleep(136);
+Console.WriteLine("Machine Name: " + Environment.MachineName); // realised there was a better way of doing this
+Thread.Sleep(300);
+
+try
+{
+
+    if (IsRunningAsAdmin())
+    {
+        Console.WriteLine("Running as administrator");
+    }
+    else
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("WARNING YOU ARE NOT RUNNING AS ADMINISTRATOR!");
+        Console.ResetColor();
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("Starting with administrator privilages will avoid crashes");
+    }
+    static bool IsRunningAsAdmin()
+    {
+        WindowsIdentity admin = WindowsIdentity.GetCurrent();
+        if (admin == null)
+        {
+            return false;
+        }
+        WindowsPrincipal principal = new WindowsPrincipal(admin);
+        return principal.IsInRole(WindowsBuiltInRole.Administrator);
+    }
+}
+
+catch
+{
+    Console.WriteLine("An error occured checking for admin");
+}
+
+Thread.Sleep(3000);
+Console.Clear();
+Console.ForegroundColor = ConsoleColor.DarkMagenta;
+Console.WriteLine("Welcome to BootCamp AIO by miniusbhater");
+Console.ResetColor();
+
+Thread.Sleep(1500);
 Console.Clear();
 Thread.Sleep(200);
 Console.WriteLine("\r\n__________               __   _________                        \r\n\\______   \\ ____   _____/  |_ \\_   ___ \\_____    _____ ______  \r\n |    |  _//  _ \\ /  _ \\   __\\/    \\  \\/\\__  \\  /     \\\\____ \\ \r\n |    |   (  <_> |  <_> )  |  \\     \\____/ __ \\|  Y Y  \\  |_> >\r\n |______  /\\____/ \\____/|__|   \\______  (____  /__|_|  /   __/ \r\n        \\/                            \\/     \\/      \\/|__|    \r\n                     _____  .___________                       \r\n                    /  _  \\ |   \\_____  \\                      \r\n                   /  /_\\  \\|   |/   |   \\                     \r\n                  /    |    \\   /    |    \\                    \r\n                  \\____|__  /___\\_______  /                    \r\n                          \\/            \\/                     \r\n");
 Console.WriteLine("              Made with love by miniusbhater <3");
+Console.WriteLine("                   Detected Model: " + mode);
 Thread.Sleep(100);
-Console.WriteLine("\n \n \n \nWhat era is your Mac from?");
-Console.WriteLine("\n1. 2017-2020 \n2. 2014-2016 \n3. 2011-2013 \n4. 2008-2010 \n5. 2006-2007\n \n");
+Console.WriteLine("\n \n \n \nWhat BootCamp version do you want?");
+Console.WriteLine("\n1. null \n2. null \n3. BootCamp5.0.5033 \n4. null \n5. null\n \n");
 string? input = Console.ReadLine()?.ToLower();
+
 
 if (input == "1")
 { 
