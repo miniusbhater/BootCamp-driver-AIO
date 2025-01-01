@@ -5,7 +5,7 @@ Thread.Sleep(1000);
 Console.Clear();
 Thread.Sleep(200);
 Console.WriteLine("\r\n__________               __   _________                        \r\n\\______   \\ ____   _____/  |_ \\_   ___ \\_____    _____ ______  \r\n |    |  _//  _ \\ /  _ \\   __\\/    \\  \\/\\__  \\  /     \\\\____ \\ \r\n |    |   (  <_> |  <_> )  |  \\     \\____/ __ \\|  Y Y  \\  |_> >\r\n |______  /\\____/ \\____/|__|   \\______  (____  /__|_|  /   __/ \r\n        \\/                            \\/     \\/      \\/|__|    \r\n                     _____  .___________                       \r\n                    /  _  \\ |   \\_____  \\                      \r\n                   /  /_\\  \\|   |/   |   \\                     \r\n                  /    |    \\   /    |    \\                    \r\n                  \\____|__  /___\\_______  /                    \r\n                          \\/            \\/                     \r\n");
-Console.WriteLine("Version 1.0.0");
+Console.WriteLine("              Made with love by miniusbhater <3");
 Thread.Sleep(100);
 Console.WriteLine("\n \n \n \nWhat era is your Mac from?");
 Console.WriteLine("\n1. 2017-2020 \n2. 2014-2016 \n3. 2011-2013 \n4. 2008-2010 \n5. 2006-2007\n \n");
