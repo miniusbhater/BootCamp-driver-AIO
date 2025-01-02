@@ -6,9 +6,9 @@ using Microsoft.VisualBasic;
 using System.Security.Principal;
 
 Thread.Sleep(400);
-Console.WriteLine("Version: 1.0.0.0");
+Console.WriteLine("Version: 0.1.0.0");
 Thread.Sleep(75);
-Console.WriteLine("Build date: 01/01/2025");
+Console.WriteLine("Build date: 02/01/2025");
 Thread.Sleep(1000);
 Console.WriteLine("Getting computer information...");
 Thread.Sleep(500);
